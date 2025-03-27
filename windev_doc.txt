@@ -1,0 +1,63 @@
+start terminal
+
+# SETUP ENV Variables
+run scripts\win_envars.bat
+
+# Install packages
+run npm install
+
+# Audit the package versions used
+run npm audit
+decide if the warnings are okay with you
+using the latest as of 27.03.2025:  
+  "dependencies": {
+    "express": "^4.21.2",
+    "http-errors": "^2.0",
+    "morgan": "^1.10",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "chromedriver": "^134.0.5",
+    "eslint": "^9.23.0",
+    "geckodriver": "^5.0.0",
+    "htmllint-cli": "^0.0.7",
+    "nightwatch": "^3.12.1",
+    "stylelint": "^16.17.0"
+  }
+  
+  
+# Optional - Install dotenv envar tooling
+// or just always use the win_envars.bat
+
+// https://www.npmjs.com/package/dotenv
+// https://github.com/motdotla/dotenv-expand
+// https://github.com/motdotla/dotenv-expand/blob/master/tests/.env.test
+// https://github.com/dotenvx/dotenvx
+
+run npm install dotenv --save-dev
+run npm install dotenv-expand --save-dev
+copy win_example.env in root of project
+rename to .env
+
+  
+# Easy - Create SSL keys
+run npm run win_ssl-keys 
+
+# Install Firefox Developer Edition
+https://www.mozilla.org/en-US/firefox/developer/
+
+#running examples
+run npm run win_batenv_start:demos
+run npm run win_dotenv_start:demos
+// demos
+or
+run npm run win_batenv_start
+run npm run win_dotenv_start
+// running current dev state
+https://localhost:3000/
+
+#File extensions style
+Use .mjs for module js code
+// Upgrade the code to modules where possible
+Use .js for non module js code
+// expressjs uses legacy non module code 
